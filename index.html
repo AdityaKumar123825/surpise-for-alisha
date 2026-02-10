@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Alisha ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            height: 100vh;
+            background: linear-gradient(135deg, #2b1055, #ff758c);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+            color: white;
+        }
+        .card {
+            width: 90%;
+            max-width: 380px;
+            padding: 30px;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            animation: fadeUp 1.2s ease-out forwards;
+        }
+        h1 { font-size: 24px; margin-bottom: 15px; text-shadow: 0 0 10px rgba(255, 209, 220, 0.5); }
+        .message { font-size: 14px; line-height: 1.6; margin-bottom: 20px; opacity: 0; animation: fadeIn 1.5s ease forwards; animation-delay: 0.5s; }
+        .shayari { font-style: italic; font-size: 15px; color: #ffe6ee; padding: 15px 0; border-top: 1px solid rgba(255, 255, 255, 0.1); opacity: 0; animation: fadeIn 1.5s ease forwards; animation-delay: 1s; }
+        .btn-control {
+            margin-top: 10px;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 50px;
+            background: #ff4f81;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(255, 79, 129, 0.4);
+        }
+        .btn-control:active { transform: scale(0.95); }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { to { opacity: 1; } }
+        .heart { position: absolute; bottom: -20px; font-size: 20px; color: rgba(255, 255, 255, 0.5); pointer-events: none; animation: rise linear infinite; }
+        @keyframes rise { 0% { transform: translateY(0) rotate(0deg); opacity: 0.8; } 100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; } }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>For Alisha ✨</h1>
+        <div class="message">
+            Happy Valentine’s Day ❤️<br><br>
+            When I said <i>“I love you”</i> and you said it back,  
+            it stayed with me quietly —  
+            like a smile that comes on its own 😊<br><br>
+            What I feel is gentle, real, and all for you 🌸
+        </div>
+        <div class="shayari">
+            “Tumhe chaha to bas itna chaha,<br>
+            ke kisi aur ko chahne ka khayal bhi na aaya.”
+        </div>
+        <button id="musicBtn" class="btn-control">▶ Play Music</button>
+    </div>
+
+    <audio id="bgMusic" loop preload="auto">
+        <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const music = document.getElementById("bgMusic");
+        const btn = document.getElementById("musicBtn");
+
+        // Click event listener jo har mobile browser pe kaam karega
+        btn.addEventListener("click", function() {
+            if (music.paused) {
+                music.play();
+                btn.innerHTML = "⏸ Pause Music";
+            } else {
+                music.pause();
+                btn.innerHTML = "▶ Play Music";
+            }
+        });
+
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.className = "heart";
+            heart.innerHTML = "❤";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+            document.body.appendChild(heart);
+            setTimeout(() => { heart.remove(); }, 6000);
+        }
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>
